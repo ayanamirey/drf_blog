@@ -8,8 +8,21 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = (
             'title',
-            'test',
+            'author',
+            'id',
+            'text',
             'created_date'
+        )
+
+    def create(self, validated_data):
+        return Post.objects.create(validated_data)
+
+
+class PostTitleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = (
+            'title',
         )
 
     def create(self, validated_data):
